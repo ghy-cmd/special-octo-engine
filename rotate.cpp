@@ -4,7 +4,23 @@ using namespace std;
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        
+        int size=nums.size();                       
+        k=k%size;
+        int n=-1,j=-1,temp,tt;
+        for (int i = 0; i < size; i++)
+        {
+            if (j==n)
+            {
+                n=n+1;
+                j=n;
+                temp=nums[j];
+            }
+            j=(j+k)%size;
+            tt=nums[j];
+            nums[j]=temp;
+            temp=tt;
+        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
     }
 };
 
