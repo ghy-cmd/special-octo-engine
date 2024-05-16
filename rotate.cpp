@@ -3,7 +3,7 @@
 using namespace std;
 class Solution {
 public:
-    void rotate(vector<int>& nums, int k) {
+    void rotate_1(vector<int>& nums, int k) {
         int size=nums.size();                       
         k=k%size;
         int n=-1,j=-1,temp,tt;
@@ -19,18 +19,36 @@ public:
             tt=nums[j];
             nums[j]=temp;
             temp=tt;
-        }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    }
+    void rotate(vector<vector<int>>& matrix) {
+        int n=matrix.size(),m=0,temp;
+        do
+        {
+            for (int i = 0; i < n-2*m-1; i++)
+            {
+                temp=matrix[m][m+i];
+                swap(matrix[m+i][n-m-1],temp);
+                swap(matrix[n-m-1][n-m-1-i],temp);
+                swap(matrix[n-m-1-i][m],temp);
+                swap(matrix[m][m+i],temp);
+            }
+            m++;
+        } while (2*(m+1)<=n);
     }
 };
 
 int main(){
     Solution a;
-    vector<int> vec={1,2,3,4,5,6};
-    a.rotate(vec,4);
-    for (auto it = vec.begin(); it != vec.end(); it++)
+    vector<vector<int>> vec={{5,1,9,11},{2,4,8,10},{13,3,6,7},{15,14,12,16}};
+    a.rotate(vec);
+    for (auto it :vec)
     {
-        cout<<*it<<" ";
+        for (auto i :it)
+        {
+            cout<<i<<" ";
+        }
+        cout<<endl;
     }
     return 0;
 }
