@@ -4,18 +4,17 @@ using namespace std;
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        int size=nums.size(),t;
-        vector<int> res(size,INT_MAX);
-        res[0]=0;
-        for (int i = 0; i < size; i++)
+        int size=nums.size(),step=0,max_hoop=0,end=0;
+        for (int i = 0; i < size-1; i++)
         {
-            t=nums[i];
-            for (int j = i+1; j < min(size,i+t+1); j++)
+            end=max(end,i+nums[i]);
+            if (i==max_hoop)
             {
-                res[j]=min(res[j],res[i]+1);
+                max_hoop=max(end,i+nums[i]);
+                step++;
             }
         }
-        return res[size-1];
+        return step;
     }
 };
 
