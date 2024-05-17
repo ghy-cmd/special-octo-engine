@@ -1,0 +1,1 @@
+swap(*(vec.end()-1),vec[hash[val]]);
