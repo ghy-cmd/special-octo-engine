@@ -70,11 +70,85 @@ n 个孩子站成一排。给你一个整数数组 ratings 表示每个孩子的
         }
         return label;
     }
+/*
+罗马数字转整数
+*/
+    int romanToInt(string s) {
+        int n=0,count=s.size(),i=0;
+        do
+        {
+            if (s[i]=='I')
+            {
+                if (i+1<count && s[i+1]=='V')
+                {
+                    n+=4;
+                    i+=2;
+                }else if (i+1<count && s[i+1]=='X')
+                {
+                    n+=9;
+                    i+=2;
+                }else
+                {
+                    n+=1;
+                    i+=1;
+                }
+            }else if (s[i]=='V')
+            {
+                n+=5;
+                i+=1;
+            }else if (s[i]=='X')
+            {
+                if (i+1<count && s[i+1]=='L')
+                {
+                    n+=40;
+                    i+=2;
+                }else if (i+1<count && s[i+1]=='C')
+                {
+                    n+=90;
+                    i+=2;
+                }else
+                {
+                    n+=10;
+                    i+=1;
+                }
+            }else if (s[i]=='L')
+            {
+                n+=50;
+                i+=1;
+            }else if (s[i]=='C')
+            {
+                if (i+1<count && s[i+1]=='D')
+                {
+                    n+=400;
+                    i+=2;
+                }else if (i+1<count && s[i+1]=='M')
+                {
+                    n+=900;
+                    i+=2;
+                }else
+                {
+                    n+=100;
+                    i+=1;
+                }
+            }else if (s[i]=='D')
+            {
+                n+=500;
+                i+=1;
+            }else if (s[i]=='M')
+            {
+                n+=1000;
+                i+=1;
+            }
+        }while (i<count);
+        return n;
+    }
 };
 
 int main(){
     Solution a;
-    vector<int> vec={0,1,0,2,1,0,1,3,2,1,2,1};
-    cout<<a.trap(vec)<<endl;
+    // vector<int> vec={0,1,0,2,1,0,1,3,2,1,2,1};
+    // cout<<a.trap(vec)<<endl;
+    string s="MCMXCIV";
+    cout<<a.romanToInt(s)<<endl;
     return 0;
 }
